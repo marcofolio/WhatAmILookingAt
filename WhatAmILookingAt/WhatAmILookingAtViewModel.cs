@@ -15,9 +15,6 @@ namespace WhatAmILookingAt
 {
     public class WhatAmILookingAtViewModel : INotifyPropertyChanged
     {
-        // Get your key at: https://www.microsoft.com/cognitive-services/en-us/computer-vision-api
-        private const string COMPUTER_VISION_API_KEY = "YOUR_API_KEY";
-
         public WhatAmILookingAtViewModel ()
         {
         }
@@ -73,7 +70,7 @@ namespace WhatAmILookingAt
                 Description = "Let me think...";
 
                 AnalysisResult result;
-                var client = new VisionServiceClient (COMPUTER_VISION_API_KEY);
+                var client = new VisionServiceClient (Constants.COMPUTER_VISION_KEY, Constants.COMPUTER_VISION_ROOT);
                 using (var photoStream = photo.GetStream ())
                 {
                     result = await client.DescribeAsync (photoStream);
